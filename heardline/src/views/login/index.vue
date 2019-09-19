@@ -2,7 +2,7 @@
   <div class="login">
     <el-card class="box-card">
       <div class="title">
-        <img class="img" src="../assets/img/logo_index.png" alt />
+        <img class="img" src="../../assets/img/logo_index.png"/>
       </div>
       <!-- 第一步 绑定model   2. rules  规则  3. prop 校验   -->
       <el-form ref='myFrom' :model='loginFrom' :rules='loginRules'>
@@ -37,8 +37,28 @@ export default {
   methods: {
     login () {
       // 方法中传入的一个函数 两个校验蚕食 是否校验成功的字段和没有成功的字段
-      this.$refs.myFrom.validate(function (isok) {
-        if (isok) { console.log(123) }
+      this.$refs.myFrom.validate((isok) => {
+        if (isok) {
+          this.$axios({
+            url: 'authorizations',
+            method: 'post',
+            data: this.loginFrom
+          })
+            .then(result => {
+              console.log(result)
+              // 存储token指令
+              window.localStorage.setItem('token', result.data.data.token)
+              this.$router.push('/home')
+            })
+            .catch(() => {
+              // console.log(error.message)
+              // 错误提示
+              this.$message({
+                message: '手机号 或者 验证码错误',
+                type: 'warning'
+              })
+            })
+        }
       })
     }
   },
@@ -50,7 +70,7 @@ export default {
         agree: false
       },
       loginRules: { // 规则的集合
-        mobile: [{ required: true, message: '139，8个8 ，写吧' }, { pattern: /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/, message: '手机号写的不对' }],
+        mobile: [{ required: true, message: '139，8个1 ，写吧' }, { pattern: /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/, message: '手机号写的不对' }],
         code: [{ required: true, message: '验证码246810，写吧' }, { pattern: /^\d{6}$/, message: '请输入正确的6位验证' }],
         agree: [{
           validator: function (rule, value, callBack) {
@@ -76,7 +96,7 @@ export default {
   text-align: center;
 }
 .login {
-  background-image: url(../assets/img/login_bg.jpg);
+  background-image: url(../../assets/img/login_bg.jpg);
   // height: 100vh;
   height: 100vh;
   background-size: cover;
