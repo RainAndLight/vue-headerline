@@ -22,11 +22,11 @@ export default new Router({
     },
     {
       path: '/home',
-      component: Home,
-      children: [{
-        path: '/home/shouye',
-        component : 
-      }]
+      component: Home
+      // children: [{
+      //   path: '/home/shouye',
+      //   component :
+      // }]
     }
     // {
     //   path: '/about',
