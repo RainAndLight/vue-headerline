@@ -202,8 +202,8 @@
 **接口描述：**
 <h4>1. 线上地址</h4>
 <pre><code data-language="http" class="lang-http">http://ttapi.research.itcast.cn/mp/v1_0/user/profile
-
 </code></pre>
+
 <h3>2.&nbsp; 返回HTTP状态码</h3>
 <p><strong>1. 201 OK</strong><br>
 3. 401 token过期或未传<br>

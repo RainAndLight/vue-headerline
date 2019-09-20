@@ -1,11 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import login from './views/login'
+import loginDemo from './views/login/loginDemo.vue'
 import Home from './views/home/'
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/loginDemo',
+      component: loginDemo
+    },
     {
       path: '',
       redirect: '/home'
@@ -16,7 +22,11 @@ export default new Router({
     },
     {
       path: '/home',
-      component: Home
+      component: Home,
+      children: [{
+        path: '/home/shouye',
+        component : 
+      }]
     }
     // {
     //   path: '/about',

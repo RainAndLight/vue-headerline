@@ -7,7 +7,7 @@
       <!-- 第一步 绑定model   2. rules  规则  3. prop 校验   -->
       <el-form ref='myFrom' :model='loginFrom' :rules='loginRules'>
         <el-form-item prop='mobile'>
-          <el-input v-model='loginFrom.mobile' placeholder="请输入手机号"></el-input>
+          <el-input  v-model='loginFrom.mobile' placeholder="请输入手机号"></el-input>
         </el-form-item>
         <el-form-item prop='code'>
           <el-col :span="16">
@@ -25,7 +25,7 @@
           <el-checkbox v-model='loginFrom.agree'>我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
         <el-form-item>
-          <el-button  type="primary" class="denglu" @click="login">登录</el-button>
+          <el-button   type="primary" class="denglu" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>

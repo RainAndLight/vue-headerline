@@ -1,58 +1,74 @@
 <template>
-  <div class="header">
+  <el-row type="flex" class="header-left" justify="space-between">
     <!-- 左 -->
-    <div class="header-left">
+    <el-col :span="6" class="headerLeft">
       <i class="el-icon-s-unfold"></i>
-      <span>江苏传智播客教育科技股份有限公司</span>
-    </div>
+      <span>小宫脱口秀</span>
+    </el-col>
     <!-- 右 -->
-    <div class="header-right">
-      <el-input
-        placeholder="请输入内容"
-        prefix-icon="el-icon-search"
-        v-model="input2"
-        style="width:180px"
-      ></el-input>
+    <el-col :span="8" class="headerRight">
+      <el-input placeholder="请输入内容" prefix-icon="el-icon-search" style="width:180px"></el-input>
       <span>消息</span>
       <div>
-        <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+        <el-avatar :src='!userInfo.photo?userInfo.photo: defaultImg'></el-avatar>
       </div>
-      <el-dropdown trigger="click">
-        <span class="el-dropdown-link">
-          超人不会飞
+      <el-dropdown trigger="click" @command="handleCommand">
+        <span class="el-dropdown-link" >
+          {{userInfo.name}}
           <i class="el-icon-caret-bottom el-icon--right"></i>
         </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item class="clearfix">
-            评论
-            <el-badge class="mark" :value="12" />
-          </el-dropdown-item>
-          <el-dropdown-item class="clearfix">
-            回复
-            <el-badge class="mark" :value="3" />
-          </el-dropdown-item>
+        <el-dropdown-menu slot="dropdown" >
+          <el-dropdown-item class="clearfix" command="a">个人信息</el-dropdown-item>
+          <el-dropdown-item class="clearfix" command="b">github地址</el-dropdown-item>
+          <el-dropdown-item divided command="c">退出账户</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
-    </div>
-  </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
-export default {}
+export default {
+  data () {
+    return {
+      userInfo: {},
+      defaultImg: require('../../assets/img/avatar.jpg')
+    }
+  },
+  methods: {
+    handleCommand (command) {
+      if (command === 'b') {
+        location.href = 'https://github.com/RainAndLight/vue-headerline.git'
+      } else if (command === 'c') {
+        localStorage.clear()
+        this.$router.push('/login')
+      }
+    },
+    getUserInfo () {
+      let token = window.localStorage.getItem('token')
+      this.$axios({
+        url: '/user/profile',
+        headers: { Authorization: `Bearer ${token}` }
+      }).then(result => {
+        console.log(result)
+        this.userInfo = result.data.data
+      })
+    }
+  },
+  created () {
+    this.getUserInfo()
+  }
+}
 </script>
 
 <style lang='less'>
-.header {
-  height: 50px;
-  line-height: 50px;
-  .header-left {
-    float: left;
-  }
-  .header-right {
-      display: flex;
-      float: right;
-    width: 380px;
-    justify-content: space-between;
-  }
+.headerLeft {
+  display: flex;
+  align-items: center;
+}
+.headerRight {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

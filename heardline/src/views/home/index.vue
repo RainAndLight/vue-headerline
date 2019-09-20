@@ -2,11 +2,11 @@
   <div>
     <el-container>
       <el-aside style="width:200px;">
-        <layaside></layaside>
+        <lay-aside></lay-aside>
       </el-aside>
       <el-container>
         <el-header>
-          <layHeader></layHeader>
+          <lay-header></lay-header>
         </el-header>
         <el-main>
           右侧内容
@@ -18,13 +18,8 @@
 </template>
 
 <script>
-import layAside from '../../components/home/lay-aside'
-import layHeader from '../../components/home/lay-header'
 export default {
-  components: {
-    'layaside': layAside,
-    'layHeader': layHeader
-  }
+
 }
 </script>
 
