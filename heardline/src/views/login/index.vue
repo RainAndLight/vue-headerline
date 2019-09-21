@@ -47,7 +47,7 @@ export default {
             .then(result => {
               console.log(result)
               // 存储token指令
-              window.localStorage.setItem('token', result.data.data.token)
+              window.localStorage.setItem('token', result.data.token)
               this.$router.push('/home')
             })
             .catch(() => {

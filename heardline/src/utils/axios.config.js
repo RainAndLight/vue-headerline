@@ -12,9 +12,17 @@ axios.interceptors.request.use(
   function (error) {
     return Promise.reject(error)
   })
-// 这里设置了全局router，原来在main.js中使用
-export default {
-  install (Vue) {
-    Vue.prototype.$axios = axios
-  }
+axios.interceptors.response.use((response) => {
+  return response.data ? response.data : {}
 }
+// (error) => {
+//     return Promise.resolve(new Error())
+//   }
+)
+// 这里设置了全局router，原来在main.js中使用
+// export default {
+//   install (Vue) {
+//     Vue.prototype.$axios = axios
+//   }
+// }
+export default axios
