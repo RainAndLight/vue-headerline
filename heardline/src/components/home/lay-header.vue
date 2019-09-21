@@ -3,14 +3,14 @@
     <!-- 左 -->
     <el-col :span="6" class="headerLeft">
       <i class="el-icon-s-unfold"></i>
-      <span>小宫脱口秀</span>
+      <span>吐槽星球</span>
     </el-col>
     <!-- 右 -->
     <el-col :span="8" class="headerRight">
       <el-input placeholder="请输入内容" prefix-icon="el-icon-search" style="width:180px"></el-input>
       <span>消息</span>
       <div>
-        <el-avatar :src='!userInfo.photo?userInfo.photo: defaultImg'></el-avatar>
+        <el-avatar :src='userInfo.photo?userInfo.photo: defaultImg'></el-avatar>
       </div>
       <el-dropdown trigger="click" @command="handleCommand">
         <span class="el-dropdown-link" >
@@ -42,13 +42,13 @@ export default {
       } else if (command === 'c') {
         localStorage.clear()
         this.$router.push('/login')
+      } else if (command === 'a') {
+        this.$router.push('/home/account')
       }
     },
     getUserInfo () {
-      let token = window.localStorage.getItem('token')
       this.$axios({
-        url: '/user/profile',
-        headers: { Authorization: `Bearer ${token}` }
+        url: '/user/profile'
       }).then(result => {
         console.log(result)
         this.userInfo = result.data.data
@@ -61,7 +61,7 @@ export default {
 }
 </script>
 
-<style lang='less'>
+<style lang='less' scoped>
 .headerLeft {
   display: flex;
   align-items: center;

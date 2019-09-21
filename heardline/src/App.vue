@@ -2,9 +2,9 @@
   <router-view />
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
 </style>
 
-<script>
+<script >
 export default {}
 </script>

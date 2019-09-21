@@ -67,7 +67,7 @@ export default {
       loginFrom: {
         mobile: '',
         code: '',
-        agree: false
+        agree: true
       },
       loginRules: { // 规则的集合
         mobile: [{ required: true, message: '139，8个1 ，写吧' }, { pattern: /^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]{8}$/, message: '手机号写的不对' }],
