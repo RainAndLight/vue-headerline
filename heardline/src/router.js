@@ -27,6 +27,9 @@ export default new Router({
       children: [{
         path: '',
         component: main
+      }, {
+        path: '/home/comment',
+        component: main
       }]
     }
     // {
