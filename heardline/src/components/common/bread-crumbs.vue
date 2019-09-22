@@ -1,9 +1,10 @@
 <template>
-  <el-breadcrumb separator="/">
+<!--  separator 分隔符的意思 -->
+  <el-breadcrumb separator=">">
     <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
     <el-breadcrumb-item>
       <!-- 定义一个插槽 -->
-      评论列表
+      <slot name="title"></slot>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>

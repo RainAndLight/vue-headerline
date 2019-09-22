@@ -28,8 +28,8 @@ export default new Router({
         path: '',
         component: main
       }, {
-        path: '/home/comment',
-        component: main
+        path: 'comment',
+        component: () => import('./views/common') // 按需加载
       }]
     }
     // {
