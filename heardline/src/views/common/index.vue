@@ -13,7 +13,12 @@
       <el-table-column align="center" label="操作">
         <template slot-scope="obj">
           <el-button size="mini" type="text">修改</el-button>
-          <el-button size="mini" type="text">{{obj.row.comment_status ? '打开评论' :'关闭评论' }}</el-button>
+          <el-button
+            @click="closeOrOpen(obj.row)"
+            size="mini"
+            type="text"
+            :style="{color:obj.row.comment_status ? '#67C23A' : '#E6A23C'}"
+          >{{obj.row.comment_status ? '打开评论' :'关闭评论' }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -39,6 +44,19 @@ export default {
         params: { response_type: 'comment' } // 是路径参数
       }).then(result => {
         this.list = result.data.results
+      })
+    },
+    closeOrOpen (row) {
+      let message = row.comment_status ? '关闭' : '打开'
+      this.$confirm(`是否${message}评论`).then(() => {
+        this.$axios({
+          url: 'comments/status',
+          method: 'put',
+          params: { article_id: row.id.toString() },
+          data: { allow_comment: !row.comment_status }
+        }).then(() => {
+          this.getComment()
+        })
       })
     }
   },

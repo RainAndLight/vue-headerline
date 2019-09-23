@@ -30,6 +30,12 @@ export default new Router({
       }, {
         path: 'comment',
         component: () => import('./views/common') // 按需加载
+      }, {
+        path: 'contentList',
+        component: () => import('./views/contentList')
+      }, {
+        path: 'publish',
+        component: () => import('./views/publish')
       }]
     }
     // {

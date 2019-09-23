@@ -8,7 +8,7 @@
 
 **Path：** /mp/
 
-**Method：** GET
+##### **Method：** GET
 
 **接口描述：**
 
@@ -19,8 +19,8 @@
 &nbsp;&nbsp;&nbsp; "user.Captcha": "/v1_0/captchas/&lt;mobile:mobile&gt;",
 &nbsp;&nbsp;&nbsp; "user.SMSVerificationCode": "/v1_0/sms/codes/&lt;mobile:mobile&gt;"
 }
-
 </code></pre>
+
 <p>键为接口名称<br>
 值为接口路径</p>
 
@@ -466,10 +466,11 @@
 | Content-Type  |  application/json | 是  |   |   |
 | Authorization  |   | 是  |  Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDMyODQzNjYsInVzZXJfaWQiOjF9.mLYitrKsn4E4KdQd0CNPugKrH8uQmXEQTlG_JutC8jU |  用户token |
 **路径参数**
+
 | 参数名称 | 示例  | 备注  |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
 | target |   |  收藏的图片id |
-**Body**
+**Body **
 
 <table>
   <thead class="ant-table-thead">
@@ -1154,6 +1155,7 @@
 | Content-Type  |  application/json | 是  |   |   |
 | Authorization  |   | 是  |  Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDMyODQzNjYsInVzZXJfaWQiOjF9.mLYitrKsn4E4KdQd0CNPugKrH8uQmXEQTlG_JutC8jU |  用户token |
 **路径参数**
+
 | 参数名称 | 示例  | 备注  |
 | ------------ | ------------ | ------------ | ------------ | ------------ |
 | target |   |  文章id |
@@ -1191,8 +1193,8 @@
 
 <h4>1. 线上地址</h4>
 <pre><code data-language="http" class="lang-http">http://ttapi.research.itcast.cn/mp/v1_0/articles
-
 </code></pre>
+
 <h3>2.&nbsp; 返回HTTP状态码</h3>
 <p><strong>1. 200 OK</strong><br>
 2. 400 请求参数错误<br>
@@ -1241,8 +1243,8 @@
 **接口描述：**
 <h4>1. 线上地址</h4>
 <pre><code data-language="http" class="lang-http">http://ttapi.research.itcast.cn/mp/v1_0/channels
-
 </code></pre>
+
 <h3>2.&nbsp; 返回HTTP状态码</h3>
 <p><strong>1. 200 OK</strong><br>
 2. 507 服务器数据库异常</p>
@@ -1343,8 +1345,8 @@
 **接口描述：**
 <h4>1. 线上地址</h4>
 <pre><code data-language="http" class="lang-http">http://ttapi.research.itcast.cn/mp/v1_0/comments
+</code></pre> 
 
-</code></pre>
 <h3>2.&nbsp; 返回HTTP状态码</h3>
 <p><strong>1. 200 OK</strong><br>
 2. 400 请求参数错误<br>

@@ -23,7 +23,7 @@
         <el-menu-item index="/home/publish">
           <span>发布文章</span>
         </el-menu-item>
-        <el-menu-item index="/contentList">
+        <el-menu-item index="/home/contentList">
           <span>内容列表</span>
         </el-menu-item>
         <el-menu-item index="/home/comment">

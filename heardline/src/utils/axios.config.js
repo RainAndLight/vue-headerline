@@ -1,10 +1,17 @@
 import router from '../components/permission.js'
 // 设置request拦截器 给请求统一追加 token
 import axios from 'axios'
+
+import jsonBig from 'json-bigint'
+
 import { Message } from 'element-ui'
 // 追加设置统一的请求头
 axios.defaults.baseURL = 'http://ttapi.research.itcast.cn/mp/v1_0/'
 
+// 处理大数字
+axios.defaults.transformResponse = [function (data) {
+  return jsonBig.parse(data)
+}]
 axios.interceptors.request.use(
   function (config) {
     let token = window.localStorage.getItem('token')
